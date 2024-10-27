@@ -1,3 +1,4 @@
+/****** Étape 2: ajouter les écouteurs d'évènements aux flèches ******/
 let flecheGauche = document.querySelector(".arrow_left");
 let flecheDroite = document.querySelector(".arrow_right");
 
@@ -16,3 +17,14 @@ const affichageDroite = affichage.bind(null, "suivante");
 
 flecheGauche.addEventListener("click", affichageGauche);
 flecheDroite.addEventListener("click", affichageDroite);
+
+/****** Étape 3: ajouter les bullets points ******/
+let dotsDiv = document.querySelector(".dots");
+for(let i = 0; i < slides.length; i++){
+	let dotSpan = document.createElement("span");
+	dotSpan.classList.add("dot");
+	if(i == 0){
+		dotSpan.classList.add("dot_selected");
+	}
+	dotsDiv.appendChild(dotSpan);
+}
