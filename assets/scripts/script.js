@@ -5,11 +5,35 @@ let flecheDroite = document.querySelector(".arrow_right");
 /**
  * Cette fonction est DRY et 
  * facilite l'éventuel usage futur de removeEventListener.
+ * Le clic sur la flèche droite respectivement gauche
+ * 	->	affiche l'image suivante resp. précédente
+ * 	->	sélectionne le bullet point suivant resp. précédent
+ * 	->	affiche le texte de l'image suivante resp. précédente
  * @param {*} avantOuApres selon que la flèche est gauche ou droite le msg réfèrera
  * respectivement à l'image précédente ou suivante du carrousel.
  */
 function affichage(avantOuApres) {
-	alert(`Vous voulez afficher l'image ${avantOuApres} du carrousel.`);
+	let dotsSpan = document.querySelectorAll(".dot");
+	let j = 0;
+	for(let i = 0; i < dotsSpan.length; i++){
+		if(dotsSpan[i].classList.contains("dot_selected")){
+			j = i;
+		}
+	}
+	dotsSpan[j].classList.remove("dot_selected");
+	let image = document.querySelector(".banner-img");
+	let tagLine = document.querySelector("#banner p");
+	switch (avantOuApres){
+		case "suivante":
+			dotsSpan[j+1].classList.add("dot_selected");
+			image.src = "./assets/images/slideshow/" + slides[j+1].image;
+			tagLine.innerHTML = `<p>${slides[j+1].tagLine}</p>`;
+			break;
+		case "précédente":
+			dotsSpan[j-1].classList.add("dot_selected");
+			image.src = "./assets/images/slideshow/" + slides[j-1].image;
+			tagLine.innerHTML = `<p>${slides[j-1].tagLine}</p>`;
+	}
 }
 
 const affichageGauche = affichage.bind(null, "précédente");
