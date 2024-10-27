@@ -13,6 +13,7 @@ let flecheDroite = document.querySelector(".arrow_right");
  * respectivement à l'image précédente ou suivante du carrousel.
  */
 function affichage(avantOuApres) {
+	/****** Étapes 4 et 5: faire défiler le carrousel ******/
 	let dotsSpan = document.querySelectorAll(".dot");
 	let j = 0;
 	for(let i = 0; i < dotsSpan.length; i++){
@@ -25,11 +26,17 @@ function affichage(avantOuApres) {
 	let tagLine = document.querySelector("#banner p");
 	switch (avantOuApres){
 		case "suivante":
+			if(j === dotsSpan.length-1){
+				j = -1;
+			}
 			dotsSpan[j+1].classList.add("dot_selected");
 			image.src = "./assets/images/slideshow/" + slides[j+1].image;
 			tagLine.innerHTML = `<p>${slides[j+1].tagLine}</p>`;
 			break;
 		case "précédente":
+			if(j === 0){
+				j = dotsSpan.length;
+			}
 			dotsSpan[j-1].classList.add("dot_selected");
 			image.src = "./assets/images/slideshow/" + slides[j-1].image;
 			tagLine.innerHTML = `<p>${slides[j-1].tagLine}</p>`;
