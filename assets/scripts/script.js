@@ -9,7 +9,7 @@ let flecheDroite = document.querySelector(".arrow_right");
  * 	->	affiche l'image suivante resp. précédente
  * 	->	sélectionne le bullet point suivant resp. précédent
  * 	->	affiche le texte de l'image suivante resp. précédente
- * @param {*} avantOuApres selon que la flèche est gauche ou droite le msg réfèrera
+ * @param {string} avantOuApres selon que la flèche est gauche ou droite le msg réfèrera
  * respectivement à l'image précédente ou suivante du carrousel.
  */
 function affichage(avantOuApres) {
