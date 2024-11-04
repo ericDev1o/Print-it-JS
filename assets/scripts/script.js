@@ -2,6 +2,12 @@
 let flecheGauche = document.querySelector(".arrow_left");
 let flecheDroite = document.querySelector(".arrow_right");
 
+const affichageGauche = affichage.bind(null, "précédente");
+const affichageDroite = affichage.bind(null, "suivante");
+
+flecheGauche.addEventListener("click", affichageGauche);
+flecheDroite.addEventListener("click", affichageDroite);
+
 /**
  * Cette fonction est DRY et 
  * facilite l'éventuel usage futur de removeEventListener.
@@ -42,12 +48,6 @@ function affichage(avantOuApres) {
 			tagLine.innerHTML = `<p>${slides[j-1].tagLine}</p>`;
 	}
 }
-
-const affichageGauche = affichage.bind(null, "précédente");
-const affichageDroite = affichage.bind(null, "suivante");
-
-flecheGauche.addEventListener("click", affichageGauche);
-flecheDroite.addEventListener("click", affichageDroite);
 
 /****** Étape 3: ajouter les bullets points ******/
 let dotsDiv = document.querySelector(".dots");
